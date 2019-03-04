@@ -1,0 +1,31 @@
+<div >
+  <div >
+
+    <label>Pagination:
+      <input type="checkbox" [checked]="pagination" (change)="pagination = !pagination"/>
+      <div>
+      <label>Page #:
+        <input type="text" name="page" size="2" ngModel/>
+      </label>
+      </div>
+      <div>
+      <label>Page Size:
+        <input type="text" name="size" size="2" ngModel/>
+      </label>
+      </div>
+    </label>
+    <button (click)="requestQuoteStream()">Reactive Request</button>
+    <button (click)="requestQuoteBlocking()">Blocking Request</button>
+
+      <div *ngFor="let q of quotes$ | async">
+          <!--<app-quote-result [quote]="q" ></app-quote-result>-->
+        {{q.id}}
+      </div>
+
+
+</div>
+  <div>
+    <div>Click on quote for more detail</div>
+    <app-quote-detail [quote]="selectedQuote"></app-quote-detail>
+  </div>
+</div>
